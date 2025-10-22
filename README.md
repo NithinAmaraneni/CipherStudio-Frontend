@@ -1,16 +1,132 @@
-# React + Vite
+# ⚡ CipherStudio – Online React IDE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CipherStudio is a **browser-based React IDE** where users can create, edit, and preview React code instantly.
+It’s built as part of the **CipherSchools Full Stack Assignment** to simulate a lightweight online coding environment like CodeSandbox.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+* **Frontend (IDE):** [https://cipher-studio-weld.vercel.app/](https://cipher-studio-weld.vercel.app/)
+* **Backend (API):** [https://cipherstudio-backend-6w2u.onrender.com](https://cipherstudio-backend-6w2u.onrender.com)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🎯 Objective
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To build a full-stack browser-based React IDE that allows:
+
+1. Creating and managing project files.
+2. Writing and running React code live in the browser.
+3. Saving and reloading projects from the database.
+
+---
+
+## 🧩 Features (MVP)
+
+✅ **File Management** – Create and select project files dynamically
+✅ **React Code Editor** – Built using Sandpack by CodeSandbox
+✅ **Live Preview** – See real-time output as you code
+✅ **Save Projects** – Persist project data to MongoDB
+✅ **Load Projects** – Retrieve saved projects via project ID
+✅ **Clean UI** – IDE layout inspired by CodeSandbox
+
+*(Optional features like authentication, theming, or AWS were excluded to meet the short deadline.)*
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer          | Technology                               |
+| -------------- | ---------------------------------------- |
+| Frontend       | React + Vite + TailwindCSS               |
+| Code Execution | Sandpack (`@codesandbox/sandpack-react`) |
+| Backend        | Node.js + Express.js                     |
+| Database       | MongoDB Atlas                            |
+| Deployment     | Vercel (frontend), Render (backend)      |
+
+---
+
+## 📁 Folder Structure
+
+```
+CipherStudio/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Header.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── IDE.jsx
+│   │   └── App.jsx
+│   └── vite.config.js
+│
+└── backend/
+    ├── models/
+    │   └── Project.js
+    ├── routes/
+    │   └── projectRoutes.js
+    └── server.js
+```
+
+---
+
+## ⚙️ API Endpoints
+
+| Method | Endpoint            | Description                |
+| ------ | ------------------- | -------------------------- |
+| `POST` | `/api/projects`     | Create or update a project |
+| `GET`  | `/api/projects/:id` | Fetch project by ID        |
+
+**Example JSON**
+
+```json
+{
+  "name": "MyProject",
+  "files": [
+    { "filename": "App.js", "content": "export default function App(){ return <h1>Hello!</h1> }" }
+  ]
+}
+```
+
+---
+
+## 💻 Local Setup (Development)
+
+```bash
+# Clone both repos
+git clone <frontend-repo>
+git clone <backend-repo>
+
+# Backend setup
+cd backend
+npm install
+create .env file with:
+  PORT=5000
+  MONGO_URI=your_mongo_uri
+npm start
+
+# Frontend setup
+cd ../frontend
+npm install
+npm run dev
+```
+
+Then visit **[http://localhost:5173](http://localhost:5173)**
+
+---
+
+## 🧠 Acknowledgments
+
+* **CipherSchools** for the project challenge
+* **Sandpack by CodeSandbox** for providing the embedded React runtime
+* **Render & Vercel** for quick free hosting
+
+---
+
+## 🧾 Author
+
+**Nithin Amaraneni**
+B.Tech CSE, Lovely Professional University
+Frontend & Full Stack Developer
+
+---
